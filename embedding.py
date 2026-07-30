@@ -244,7 +244,7 @@ def create_embedding_model_with_fallback(preferred_type: str = "dashcope", **kwa
 def _build_embedder():
     preferred = os.getenv("EMBED_MODEL_TYPE", "dashcope").strip()
     
-    default_model = "text-embedding-v3" if preferred == "dashcope" else "sentence-transformers/all-MiniLM-L6-v2"
+    default_model = "text-embedding-v3" #if preferred == "dashcope" else "sentence-transformers/all-MiniLM-L6-v2"
 
     model_name = os.getenv("EMBED_MODEL_NAME", default_model).strip()
     
