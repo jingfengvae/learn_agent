@@ -9,21 +9,52 @@ load_dotenv()
 
 class HelloAgentsLLM:
     """docstring for HelloAgentsLLM"""
-    def __init__(self):
+    def __init__(self, **kwargs):
 
         self.model = os.getenv("LLM_MODEL_ID")
 
-        api_key = os.getenv("LLM_API_KEY")
+        self.api_key = os.getenv("LLM_API_KEY")
 
-        base_url = os.getenv("LLM_BASE_URL")
+        self.base_url = os.getenv("LLM_BASE_URL")
 
-        time_out = os.getenv("LLM_TIMEOUT", 60)
+        self.time_out = os.getenv("LLM_TIMEOUT", 60)
 
-        if not all([self.model, api_key, base_url]):
-            raise ValueERROR("模型ID, api_key, base_url 必须被提供或在.env文件中提供。")
+        self.kwargs = kwargs
+
+        # 自动检测provider或使用指定的provider
+        self.provider = self.auto_detect_provider()
+
+        # 根据provider设置默认的模型ID、api_key和base_url
+        if self.provider == "openai":
+            self.model = os.getenv("LLM_MODEL_ID")
+            self.api_key = os.getenv("LLM_API_KEY")
+            self.base_url = os.getenv("LLM_BASE_URL")
+        elif self.provider == "deepseek":
+            self.model = os.getenv("DEEPSEEK_MODEL_ID")
+            self.api_key = os.getenv("DEEPSEEK_API_KEY")
+            self.base_url = os.getenv("DEEPSEEK_BASE_URL")
+        elif self.provider == "qwen":
+            self.model = os.getenv("DASHSCOPE_MODEL_ID")
+            self.api_key = os.getenv("DASHSCOPE_API_KEY")
+            self.base_url = os.getenv("DASHSCOPE_BASE_URL")
+
+        if not all([self.model, self.api_key, self.base_url]):
+            raise ValueError("模型ID, api_key, base_url 必须被提供或在.env文件中提供。")
     
-        self.client = OpenAI(api_key=api_key,  base_url=base_url)
+        self.client = self.create_client()
+
+    def create_client(self):
+        # 创建客户端
+        return OpenAI(api_key=self.api_key, base_url=self.base_url, timeout=self.time_out)
     
+    def auto_detect_provider(self):
+        if os.getenv("LLM_API_KEY"):
+            return "openai"
+        if os.getenv("DEEPSEEK_API_KEY"):
+            return "deepseek"
+        if os.getenv("DASHSCOPE_API_KEY"):
+            return "qwen"
+        raise ValueError("无法自动检测提供者，请检查base_url或在.env文件中指定。")
 
     def invoke(self, messages, temperature = 0):
         print (f"正在调用{self.model}模型")
