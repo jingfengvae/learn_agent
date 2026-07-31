@@ -326,9 +326,11 @@ class RAGTool(Tool):
 
             user_question = question.strip()
 
-            print (f"智能问答: {user_question}")
+            print (f"智能问答------->: {user_question}")
 
             pipeline = self.get_pipeline(namespace)
+            
+            print (f"----->RAG管道: {pipeline.get('namespace', self.rag_namespace)}")
 
             search_start = time.time()
 
@@ -339,6 +341,8 @@ class RAGTool(Tool):
                                         enable_mqe = True,
                                         enable_hyde = True,
                                         )
+
+                print (f"高级搜索结果: {results}")
             else:
                 results = pipeline["search"](query = user_question,
                                             top_k = limit)
