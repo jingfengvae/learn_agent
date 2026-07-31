@@ -237,8 +237,8 @@ def create_embedding_model_with_fallback(preferred_type: str = "dashcope", **kwa
         try:
             return create_embedding_model(t, **kwargs)
         except Exception as e:
-            last_exception = e
-            print(f"创建 {t} 嵌入模型时出错: {e}")
+            last_exception = str(e)
+            print(f"创建 {t} 嵌入模型时出错: {last_exception}, 尝试下一个可用模型...")
             continue
     raise RuntimeError(f"所有嵌入模型都不可用，请安装依赖或检查配置: {last_exception}")
         
