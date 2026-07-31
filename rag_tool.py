@@ -308,7 +308,7 @@ class RAGTool(Tool):
         except Exception as e:
             return f"搜索失败: {str(e)}"
 
-
+    @tool_action("rag_ask", "基于知识库进行智能问答")
     def _ask(self, 
             question: str,
             limit: int = 5,
