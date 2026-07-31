@@ -1,7 +1,7 @@
 import os
 from typing import Dict, Any, List, Optional
 from hello_agent import HelloAgentsLLM
-from tool_base import Tool, tool_action
+from tool_base import Tool, ToolParameter, tool_action
 from rag_pipeline import create_rag_pipeline
 
 class RAGTool(Tool):
@@ -115,51 +115,51 @@ class RAGTool(Tool):
 
     def get_parameters(self):
         return [
-                ToolParameters(
+                ToolParameter(
                             namespace = "action",
                             type = "string",
                             description = "操作类型: add_document(添加文档), add_text(添加文本), ask(智能回答), search(搜索), stats(统计), clear(清空)",
                             required = True
                             ),
 
-                ToolParameters(
+                ToolParameter(
                             namespace = "file_path",
                             type = "string",
                             description = "文档文件路径: (支持PDF、Word、Excel、PPT、图片、音频等多种格式)",
                             required = False
                             ),
 
-                ToolParameters(
+                ToolParameter(
                             namespace = "text",
                             type = "string",
                             description = "要添加的文本内容",
                             required = False
                             ),
-                ToolParameters(
+                ToolParameter(
                             namespace = "question",
                             type = "string",
                             description = "用户问题(用于智能回答)",
                             required = False
                             ),
-                ToolParameters(
+                ToolParameter(
                             namespace = "query",
                             type = "string",
                             description = "搜索查询词(用于基础搜索)",
                             required = False
                             ),
-                ToolParameters(
+                ToolParameter(
                             namespace = "namespace",
                             type = "string",
                             description = "知识库的命名空间(用于隔离不同项目, 默认: default)",
                             required = False
                             ),
-                ToolParameters(
+                ToolParameter(
                             namespace = "limit",
                             type = "integer",
                             description = "返回结果数量(默认: 5)",
                             required = False
                             ),
-                ToolParameters(
+                ToolParameter(
                             namespace = "include_citations",
                             type = "boolean",
                             description = "是否包含引用来源(默认: true)",
