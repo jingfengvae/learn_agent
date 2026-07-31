@@ -116,51 +116,51 @@ class RAGTool(Tool):
     def get_parameters(self):
         return [
                 ToolParameter(
-                            namespace = "action",
+                            name = "action",
                             type = "string",
                             description = "操作类型: add_document(添加文档), add_text(添加文本), ask(智能回答), search(搜索), stats(统计), clear(清空)",
                             required = True
                             ),
 
                 ToolParameter(
-                            namespace = "file_path",
+                            name = "file_path",
                             type = "string",
                             description = "文档文件路径: (支持PDF、Word、Excel、PPT、图片、音频等多种格式)",
                             required = False
                             ),
 
                 ToolParameter(
-                            namespace = "text",
+                            name = "text",
                             type = "string",
                             description = "要添加的文本内容",
                             required = False
                             ),
                 ToolParameter(
-                            namespace = "question",
+                            name = "question",
                             type = "string",
                             description = "用户问题(用于智能回答)",
                             required = False
                             ),
                 ToolParameter(
-                            namespace = "query",
+                            name = "query",
                             type = "string",
                             description = "搜索查询词(用于基础搜索)",
                             required = False
                             ),
                 ToolParameter(
-                            namespace = "namespace",
+                            name = "namespace",
                             type = "string",
                             description = "知识库的命名空间(用于隔离不同项目, 默认: default)",
                             required = False
                             ),
                 ToolParameter(
-                            namespace = "limit",
+                            name = "limit",
                             type = "integer",
                             description = "返回结果数量(默认: 5)",
                             required = False
                             ),
                 ToolParameter(
-                            namespace = "include_citations",
+                            name = "include_citations",
                             type = "boolean",
                             description = "是否包含引用来源(默认: true)",
                             required = True
