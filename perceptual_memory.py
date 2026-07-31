@@ -113,7 +113,7 @@ class PerceptualMemory(BaseMemory):
             self._audio_dim = self.vector_dim
 
         # 向量存储（Qdrant）— 按模态拆分集合，避免维度冲突，使用连接管理器避免重复连接
-        from ..storage.qdrant_store import QdrantConnectionManager
+        from qdrant_store import QdrantConnectionManager
         qdrant_url = os.getenv("QDRANT_URL")
         qdrant_api_key = os.getenv("QDRANT_API_KEY")
         base_collection = os.getenv("QDRANT_COLLECTION", "hello_agents_vectors")
