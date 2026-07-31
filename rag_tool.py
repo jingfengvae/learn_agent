@@ -88,6 +88,7 @@ class RAGTool(Tool):
                                     chunk_overlap = parameters.get("chunk_overlap", 100))
             elif action == "ask":
                 question = parameters.get("question") or parameters.get("query")
+                print ("************", f"智能问答: {question}", f"参数: {parameters}")
                 return self._ask(question = question, 
                                 limit = parameters.get("limit", 5),
                                 enable_advanced_search = parameters.get("enable_advanced_search", True),
