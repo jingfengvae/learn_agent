@@ -76,6 +76,7 @@ class Tool(ABC):
     def validate_parameters(self, parameters: Dict[str, Any]) -> bool:
         """验证参数"""
         required_params = [p.name for p in self.get_parameters() if p.required]
+        print (f"验证参数: {parameters}, 必需参数: {required_params}")
         return all(param in parameters for param in required_params)
     
     def to_dict(self) -> Dict[str, Any]:
