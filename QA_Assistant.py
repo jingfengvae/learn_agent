@@ -174,7 +174,7 @@ class PDFLearningAssistant:
             "session_info": {
                 "session_id": self.session_id,
                 "user_id": self.user_id,
-                "start_time": self.stats["session_start"].isofromat(),
+                "start_time": self.stats["session_start"].isoformat(),
                 "duration_seconds": duration
                 },
 
