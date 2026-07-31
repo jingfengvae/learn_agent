@@ -99,9 +99,10 @@ class PDFLearningAssistant:
             "action": "ask",
             "question": question,
             "limit": 5,
+            "include_citations": True,
             "enable_advanced_search": use_advanced_search,
-            "enable_mqe":use_advanced_search,
-            "enable_hyde": use_advanced_search
+            "max_chars": 1200,
+            "namespace": f"pdf_{self.user_id}"
             })
         
         """记录到情景记忆"""
