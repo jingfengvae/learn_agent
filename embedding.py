@@ -23,7 +23,7 @@ _embedder: Optional[EmbeddingModel] = None
 class LocalTransformerEmbedding(EmbeddingModel):
     """本地Transformer嵌入（优先 sentence-transformers，缺失回退 transformers+torch）"""
 
-    def __init__(self, model_name: str = "sentence-transformers/all-MiniLM-L6-v2"):
+    def __init__(self, model_name: str = "/root/repo/learn_agent/bge-small-zh-v1.5"):
         self.model_name = model_name
         self._backend = None
         self._st_model = None
