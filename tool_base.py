@@ -1,7 +1,7 @@
 """工具基类"""
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any, List, Callable, get_type_hints
+from typing import Dict, Any, List, Callable, Optional, get_type_hints
 from pydantic import BaseModel
 import inspect
 
