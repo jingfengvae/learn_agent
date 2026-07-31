@@ -320,7 +320,7 @@ class RAGTool(Tool):
 
         try:
            
-            if not question or question.strip():
+            if not question or not question.strip():
                 return "请提供必要的查询"
 
             user_question = question.strip()
