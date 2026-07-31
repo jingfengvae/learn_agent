@@ -139,19 +139,19 @@ class SemanticMemory(BaseMemory):
     def _init_databases(self):
         """初始化专业数据库存储"""
         try:
-            from ...core.database_config import get_database_config
+            from database_config import get_database_config
             # 获取数据库配置
             db_config = get_database_config()
             
             # 初始化Qdrant向量数据库（使用连接管理器避免重复连接）
-            from ..storage.qdrant_store import QdrantConnectionManager
+            from qdrant_store import QdrantConnectionManager
             qdrant_config = db_config.get_qdrant_config() or {}
             qdrant_config["vector_size"] = get_dimension()
             self.vector_store = QdrantConnectionManager.get_instance(**qdrant_config)
             logger.info("✅ Qdrant向量数据库初始化完成")
             
             # 初始化Neo4j图数据库
-            from ..storage.neo4j_store import Neo4jGraphStore
+            from neo4j_store import Neo4jGraphStore
             neo4j_config = db_config.get_neo4j_config()
             self.graph_store = Neo4jGraphStore(**neo4j_config)
             logger.info("✅ Neo4j图数据库初始化完成")
