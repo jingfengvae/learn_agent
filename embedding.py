@@ -231,20 +231,23 @@ def create_embedding_model_with_fallback(preferred_type: str = "dashcope", **kwa
     if preferred_type in fallback:
         fallback.remove(preferred_type)
         fallback.insert(0, preferred_type)
-
+    
+    last_exception = None
     for t in fallback:
         try:
             return create_embedding_model(t, **kwargs)
-        except Exception:
+        except Exception as e:
+            last_exception = e
+            print(f"创建 {t} 嵌入模型时出错: {e}")
             continue
-    raise RuntimeError("所有嵌入模型都不可用，请安装依赖或检查配置")
+    raise RuntimeError(f"所有嵌入模型都不可用，请安装依赖或检查配置: {last_exception}")
         
 
 
 def _build_embedder():
     preferred = os.getenv("EMBED_MODEL_TYPE", "dashcope").strip()
     
-    default_model = "text-embedding-v3" #if preferred == "dashcope" else "sentence-transformers/all-MiniLM-L6-v2"
+    default_model = "text-embedding-v3" if preferred == "dashcope" else "sentence-transformers/all-MiniLM-L6-v2"
 
     model_name = os.getenv("EMBED_MODEL_NAME", default_model).strip()
     
