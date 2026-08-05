@@ -179,14 +179,20 @@ class RAGTool(Tool):
         try:
             if not file_path or not os.exist.path(file_path):
                 return f"文件不存在: {file_path}"
+            
+            print ("+++++++++++++++++++++++++++++++++++++")
 
             pipeline = self.get_pipeline(namespace)
 
             t0 = time.time()
 
+            print ("111111+++++++++++++++++++++++++++++++++++++")
+
             chunks_added = pipeline["add_document"](file_paths = [file_path],
                                                     chunk_size = chunk_size,
                                                     chunk_overlap = chunk_overlap)
+
+            print ("2222222222s+++++++++++++++++++++++++++++++++++++")
             t1 = time.time()
 
             process_ms = int((t1 - t0) * 1000)
