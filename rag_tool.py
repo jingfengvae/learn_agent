@@ -191,6 +191,8 @@ class RAGTool(Tool):
 
             process_ms = int((t1 - t0) * 1000)
 
+            print (f"---------------> 处理时间: {process_ms}ms")
+
             if chunks_added == 0:
                 return f"未能从文件解析内容: {os.path.basename(file_path)}"
 
