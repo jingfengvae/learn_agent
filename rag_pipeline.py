@@ -1152,6 +1152,7 @@ def create_rag_pipeline(
     
     def add_documents(file_paths: List[str], chunk_size: int = 800, chunk_overlap: int = 100):
         """Add documents to RAG pipeline"""
+        print (f"[RAG] Adding documents to pipeline: {file_paths}")
         chunks = load_and_chunk_texts(
             paths=file_paths,
             chunk_size=chunk_size,

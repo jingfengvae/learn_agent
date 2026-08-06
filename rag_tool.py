@@ -202,7 +202,7 @@ class RAGTool(Tool):
 
             print (f"111111+++++++++++++++++++++++++++++++++++++----> {namespace}: {pipeline.get('namespace', self.rag_namespace)}")
 
-            chunks_added = pipeline["add_document"](file_paths = [file_path],
+            chunks_added = pipeline["add_documents"](file_paths = [file_path],
                                                     chunk_size = chunk_size,
                                                     chunk_overlap = chunk_overlap)
 
