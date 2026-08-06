@@ -159,19 +159,22 @@ class RAGTool(Tool):
                             name = "namespace",
                             type = "string",
                             description = "知识库的命名空间(用于隔离不同项目, 默认: default)",
-                            required = False
+                            required = False,
+                            default = "default"
                             ),
                 ToolParameter(
                             name = "limit",
                             type = "integer",
                             description = "返回结果数量(默认: 5)",
-                            required = False
+                            required = False,
+                            default = 5
                             ),
                 ToolParameter(
                             name = "include_citations",
                             type = "boolean",
                             description = "是否包含引用来源(默认: true)",
-                            required = True
+                            required = False,
+                            default = True
                             )
                 ]
 
