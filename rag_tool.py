@@ -196,6 +196,8 @@ class RAGTool(Tool):
 
             pipeline = self.get_pipeline(namespace)
 
+            print (f"pipeline namespace: {pipeline.get('namespace', self.rag_namespace)}")
+
             t0 = time.time()
 
             print (f"111111+++++++++++++++++++++++++++++++++++++----> {namespace}: {pipeline.get('namespace', self.rag_namespace)}")
