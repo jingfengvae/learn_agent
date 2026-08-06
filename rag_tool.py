@@ -84,7 +84,7 @@ class RAGTool(Tool):
                 print ("---------> excute ----> add_document")
                 return self._add_document(file_path = parameters.get("file_path"),
                                         document_id = parameters.get("document_id"),
-                                        namespace = parameters.get("namespace", "default"),
+                                        namespace = parameters.get("namespace"),
                                         chunk_size = parameters.get("chunk_size", 800),
                                         chunk_overlap = parameters.get("chunk_overlap", 100))
             elif action == "add_text":
