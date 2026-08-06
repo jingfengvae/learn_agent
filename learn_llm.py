@@ -48,7 +48,7 @@ class HelloAgentsLLM:
 
 if __name__ == '__main__':
     
-    model = "gpt-5.2"
+    model = "gpt-5.4-nano"
 
     llmClient = HelloAgentsLLM(model)
 
