@@ -198,7 +198,7 @@ class RAGTool(Tool):
 
             t0 = time.time()
 
-            print ("111111+++++++++++++++++++++++++++++++++++++")
+            print (f"111111+++++++++++++++++++++++++++++++++++++----> {namespace}: {pipeline.get('namespace', self.rag_namespace)}")
 
             chunks_added = pipeline["add_document"](file_paths = [file_path],
                                                     chunk_size = chunk_size,
