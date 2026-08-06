@@ -10,7 +10,7 @@ class HelloAgentsLLM:
 
         self.model = model
     
-        self.client = OpenAI(api_key="sk-cGxiB1iFm5gm3maLT1LHeFA2XguPZiU2GQ9rMs3wt8pbftcK",  base_url="https://api.chatanywhere.tech")
+        self.client = OpenAI(api_key="sk-7QVK3bnSGwlrKpfjNnnUTRnKxX2BEQRfruyEXpfExYCaQtk2s",  base_url="https://api.chatanywhere.tech")
     
 
     def think(self, message, temperature = 0):
@@ -48,7 +48,7 @@ class HelloAgentsLLM:
 
 if __name__ == '__main__':
     
-    model = "gpt-3.5-turbo"
+    model = "gpt-5.2"
 
     llmClient = HelloAgentsLLM(model)
 
