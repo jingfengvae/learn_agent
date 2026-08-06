@@ -69,6 +69,8 @@ class RAGTool(Tool):
 
     def run(self, parameters: Dict[str, Any]):
 
+        print (f"->>>>>>>>>>>>>>>>>>>RAG工具运行参数: {parameters}")
+
         if not self.validate_parameters(parameters):
             return f"{parameters} --> 参数验证Error: 缺少必要的参数"
 
