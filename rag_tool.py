@@ -72,6 +72,7 @@ class RAGTool(Tool):
         print (f"->>>>>>>>>>>>>>>>>>>RAG工具运行参数: {parameters}")
 
         if not self.validate_parameters(parameters):
+            print (f"{parameters} --> 参数验证Error: 缺少必要的参数")
             return f"{parameters} --> 参数验证Error: 缺少必要的参数"
 
         action = parameters.get("action")
