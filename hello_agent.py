@@ -45,7 +45,7 @@ class HelloAgentsLLM:
 
     def create_client(self):
         # 创建客户端
-        return OpenAI(api_key=self.api_key, base_url=self.base_url, timeout=self.time_out)
+        return OpenAI(api_key=self.api_key, base_url=self.base_url)
     
     def auto_detect_provider(self):
         if os.getenv("LLM_API_KEY"):
