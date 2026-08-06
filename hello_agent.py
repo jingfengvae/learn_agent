@@ -68,7 +68,7 @@ class HelloAgentsLLM:
                 )
             
             print ("大模型响应成功：")
-
+            """
             collected_content = []
             for chunk in response:
                 if not chunk.choices:
@@ -78,6 +78,8 @@ class HelloAgentsLLM:
                 collected_content.append(content)
             print ()
             return "".join(collected_content)
+            """
+            return response.choices[0].message.content
         except Exception as e:
             print (f" X 调用 LLM API 时发生错误：{e}")
             return None 
