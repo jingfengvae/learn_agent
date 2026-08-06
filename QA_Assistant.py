@@ -43,6 +43,8 @@ class PDFLearningAssistant:
         start_time = time.time()
 
         try:
+            print ("begin loading document:", pdf_path)
+
             result = self.rag_tool.run({
                     "action": "add_document",
                     "file_path": pdf_path,
@@ -52,6 +54,8 @@ class PDFLearningAssistant:
 
             process_time = time.time() - start_time
 
+            print ("end loading document:", pdf_path, "cost time: ", process_time, "s")
+            
             # RAG 工具返回的是字符串消息
 
             self.current_document = os.path.basename(pdf_path)
