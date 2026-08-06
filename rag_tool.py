@@ -80,6 +80,7 @@ class RAGTool(Tool):
 
         try:
             if action == "add_document":
+                print ("---------> excute ----> add_document")
                 return self._add_document(file_path = parameters.get("file_path"),
                                         document_id = parameters.get("document_id"),
                                         namespace = parameters.get("namespace", "default"),
