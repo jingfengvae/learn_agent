@@ -56,15 +56,15 @@ class HelloAgentsLLM:
             return "qwen"
         raise ValueError("无法自动检测提供者，请检查base_url或在.env文件中指定。")
 
-    def invoke(self, messages, temperature = 0):
+    def invoke(self, messages, temperature = 0.7):
         print (f"正在调用{self.model}模型")
 
         try:
+            print (f"--------> messages: {messages}")
             response = self.client.chat.completions.create(
                 model = self.model,
                 messages = messages,
-                temperature = temperature,
-                stream = True
+                temperature = temperature
                 )
             
             print ("大模型响应成功：")
