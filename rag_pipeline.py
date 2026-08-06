@@ -1140,6 +1140,7 @@ def create_rag_pipeline(
         Dict containing store, namespace, and helper functions
     """
     dimension = get_dimension(384)
+    print (f"[RAG] Initializing RAG pipeline with collection '{collection_name}', namespace '{rag_namespace}', dimension {dimension}")
     
     store = QdrantVectorStore(
         url=qdrant_url,
