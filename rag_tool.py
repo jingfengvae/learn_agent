@@ -74,6 +74,8 @@ class RAGTool(Tool):
 
         action = parameters.get("action")
 
+        print (f"RAG工具执行操作: {action}, 参数: {parameters}")
+
         try:
             if action == "add_document":
                 return self._add_document(file_path = parameters.get("file_path"),
