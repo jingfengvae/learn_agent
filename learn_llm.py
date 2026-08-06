@@ -10,7 +10,7 @@ class HelloAgentsLLM:
 
         self.model = model
     
-        self.client = OpenAI(api_key="sk-7QVK3bnSGwlrKpfjNnnUTRnKxX2BEQRfruyEXpfExYCaQtk2s",  base_url="https://api.chatanywhere.tech")
+        self.client = OpenAI(api_key="sk-YBzd6gSKeLxqpAxesHDSxbXmgoGSTI3sJALVFbjrUh2m7hH6",  base_url="https://api.chatanywhere.tech")
     
 
     def think(self, message, temperature = 0):
