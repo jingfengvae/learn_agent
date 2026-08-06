@@ -186,6 +186,8 @@ class RAGTool(Tool):
                             chunk_overlap: int = 100):
 
         try:
+            print ("*********+++++++++++++++++++++++++++++++++++++********")
+            
             if not file_path or not os.exist.path(file_path):
                 return f"文件不存在: {file_path}"
             
