@@ -349,6 +349,8 @@ class SemanticMemory(BaseMemory):
         try:
             # 生成查询向量
             query_embedding = self.embedding_model.encode(query)
+
+            print ("--------***********embedding len =", len(query_embedding))
             
             # 构建过滤条件
             where_filter = {"memory_type": "semantic"}
