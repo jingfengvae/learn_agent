@@ -151,6 +151,7 @@ class DashScopeEmbedding(EmbeddingModel):
         # 探测维度
         test = self.encode("health_check")
         self._dimension = len(test)
+        print (f"dashscope embedding model '{self.model_name}' initialized, dimension: {self._dimension}")
 
     def _init_client(self):
         try:
