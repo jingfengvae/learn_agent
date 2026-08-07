@@ -351,7 +351,7 @@ class SemanticMemory(BaseMemory):
             query_embedding = self.embedding_model.encode(query)
 
             print ("--------***********embedding len =", len(query_embedding))
-            print (f"--------***********embedding = {self.embedding_model._dimension} and {elf.embedding_model.model_name}")
+            print (f"--------***********embedding = {self.embedding_model._dimension} and {self.embedding_model.model_name}")
             
             # 构建过滤条件
             where_filter = {"memory_type": "semantic"}
