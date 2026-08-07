@@ -151,7 +151,7 @@ class DashScopeEmbedding(EmbeddingModel):
         # 探测维度
         test = self.encode("health_check")
         self._dimension = len(test)
-        print (f"dashscope embedding model '{self.model_name}' initialized, dimension: {self._dimension}")
+        print (f"------------------>  dashscope embedding model '{self.model_name}' initialized, dimension: {self._dimension}")
 
     def _init_client(self):
         try:
@@ -192,7 +192,7 @@ class DashScopeEmbedding(EmbeddingModel):
 
         # SDK 模式
         from dashscope import TextEmbedding
-        rsp = TextEmbedding.call(model=self.model_name, input=inputs)
+        rsp = TextEmbedding.call(model=self.model_name, input=inputs, dimension=1024)
         embeddings_obj = None
         if isinstance(rsp, dict):
             embeddings_obj = (rsp.get("output") or {}).get("embeddings")

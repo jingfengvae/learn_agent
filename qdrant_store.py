@@ -507,12 +507,9 @@ class QdrantVectorStore:
         try:
             collection_info = self.client.get_collection(self.collection_name)
             
-            print (f"--------> {type(collection_info)}")
-            print (f"--------> {collection_info}")
-            
             info = {
                 "name": self.collection_name,
-                "vectors_count": collection_info.vectors_count,
+                "vectors_count": collection_info.points_count,
                 "indexed_vectors_count": collection_info.indexed_vectors_count,
                 "points_count": collection_info.points_count,
                 "segments_count": collection_info.segments_count,
