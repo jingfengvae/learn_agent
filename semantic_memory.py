@@ -349,7 +349,8 @@ class SemanticMemory(BaseMemory):
         try:
             # 生成查询向量
             query_embedding = self.embedding_model.encode(query)
-
+            
+            print (f"query ========== {query}")
             print ("--------***********embedding len =", len(query_embedding))
             print (f"--------***********embedding = {self.embedding_model._dimension} and {self.embedding_model.model_name}")
             
