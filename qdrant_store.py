@@ -351,6 +351,7 @@ class QdrantVectorStore:
         """
         try:
             if len(query_vector) != self.vector_size:
+                print (f"Error query_vector: {query_vector}")
                 logger.error(f"❌ 查询向量维度错误: 期望{self.vector_size}, 实际{len(query_vector)}")
                 return []
             
