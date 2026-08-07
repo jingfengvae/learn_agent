@@ -183,6 +183,9 @@ class DashScopeEmbedding(EmbeddingModel):
             if resp.status_code >= 400:
                 raise RuntimeError(f"Embedding REST 调用失败: {resp.status_code} {resp.text}")
             data = resp.json()
+            
+            print (f"dashscope REST embedding response: {data}")
+
             # 期望结构：{"data": [{"embedding": [...]}]}
             items = data.get("data") or []
             vecs = [np.array(item.get("embedding")) for item in items]
