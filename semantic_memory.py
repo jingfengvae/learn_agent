@@ -347,6 +347,8 @@ class SemanticMemory(BaseMemory):
     def _vector_search(self, query: str, limit: int, user_id: Optional[str] = None) -> List[Dict[str, Any]]:
         """Qdrant向量搜索"""
         try:
+            if len(query) == 0:
+                return []
             # 生成查询向量
             query_embedding = self.embedding_model.encode(query)
             
