@@ -174,7 +174,7 @@ class ContextBuilder:
         remaining_packets = [p for (_, p) in sorted(scored_packets, key=lambda x: x[0], reverse=True) if p.metadata.get("type") != "instructions"]
         
         # 5、根据min_relevance过滤
-        filtered_packets = [p for (_, p) in remaining_packets if p.relevance_score >= self.config.min_relevance]
+        filtered_packets = [p for p in remaining_packets if p.relevance_score >= self.config.min_relevance]
 
         # 6、按预算填充
         availble_tokens = self.config.get_available_tokens()
