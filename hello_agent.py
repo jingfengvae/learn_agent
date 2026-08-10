@@ -60,7 +60,6 @@ class HelloAgentsLLM:
         print (f"正在调用{self.model}模型")
 
         try:
-            print (f"--------> messages: {messages}")
             response = self.client.chat.completions.create(
                 model = self.model,
                 messages = messages,

@@ -81,7 +81,6 @@ class RAGTool(Tool):
 
         try:
             if action == "add_document":
-                print ("---------> excute ----> add_document")
                 return self._add_document(file_path = parameters.get("file_path"),
                                         document_id = parameters.get("document_id"),
                                         namespace = parameters.get("namespace"),
@@ -95,7 +94,6 @@ class RAGTool(Tool):
                                     chunk_overlap = parameters.get("chunk_overlap", 100))
             elif action == "ask":
                 question = parameters.get("question") or parameters.get("query")
-                print ("************", f"智能问答: {question}", f"参数: {parameters}")
                 return self._ask(question = question, 
                                 limit = parameters.get("limit", 5),
                                 enable_advanced_search = parameters.get("enable_advanced_search", True),
@@ -185,14 +183,9 @@ class RAGTool(Tool):
                             chunk_size: int = 800,
                             chunk_overlap: int = 100):
 
-        try:
-            print ("*********+++++++++++++++++++++++++++++++++++++********")
-            
+        try:            
             if not file_path or not os.path.exists(file_path):
-                print (f"文件不存在: {file_path}")
                 return f"文件不存在: {file_path}"
-            
-            print ("+++++++++++++++++++++++++++++++++++++")
 
             pipeline = self.get_pipeline(namespace)
 
@@ -200,18 +193,13 @@ class RAGTool(Tool):
 
             t0 = time.time()
 
-            print (f"111111+++++++++++++++++++++++++++++++++++++----> {namespace}: {pipeline.get('namespace', self.rag_namespace)}")
-
             chunks_added = pipeline["add_documents"](file_paths = [file_path],
                                                     chunk_size = chunk_size,
                                                     chunk_overlap = chunk_overlap)
 
-            print ("2222222222s+++++++++++++++++++++++++++++++++++++")
             t1 = time.time()
 
             process_ms = int((t1 - t0) * 1000)
-
-            print (f"---------------> 处理时间: {process_ms}ms")
 
             if chunks_added == 0:
                 return f"未能从文件解析内容: {os.path.basename(file_path)}"
@@ -348,11 +336,7 @@ class RAGTool(Tool):
 
             user_question = question.strip()
 
-            print (f"智能问答------->: {user_question}")
-
             pipeline = self.get_pipeline(namespace)
-            
-            print (f"----->RAG管道: {pipeline.get('namespace', self.rag_namespace)}")
 
             search_start = time.time()
 
@@ -363,8 +347,6 @@ class RAGTool(Tool):
                                         enable_mqe = True,
                                         enable_hyde = True,
                                         )
-
-                print (f"高级搜索结果: {results}")
             else:
                 results = pipeline["search"](query = user_question,
                                             top_k = limit)
