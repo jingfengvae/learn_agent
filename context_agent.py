@@ -62,5 +62,5 @@ def main():
 if __name__ == "__main__":
     print ("=== ContextAwareAgent 测试 ===")
     print ("===" * 80)
-    main()s
+    main()
     print ("===" * 80)
