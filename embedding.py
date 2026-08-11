@@ -184,7 +184,7 @@ class DashScopeEmbedding(EmbeddingModel):
                 raise RuntimeError(f"Embedding REST 调用失败: {resp.status_code} {resp.text}")
             data = resp.json()
             
-            print (f"dashscope REST embedding response: {data}")
+            # print (f"dashscope REST embedding response: {data}")
 
             # 期望结构：{"data": [{"embedding": [...]}]}
             items = data.get("data") or []
