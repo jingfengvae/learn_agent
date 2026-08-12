@@ -240,6 +240,12 @@ def main():
     response = assistant.run("在重构业务逻辑层时，我遇到了依赖版本冲突的问题，该如何解决")
     print (f"助手回答: {response}\n")
 
+    # 第三次交互
+    print ("第三次交互: 查看笔记摘要")
+    summary = assistant.note_tool.run({"action": "summary"})
+    print (f"助手回答: {json.dumps(summary, ensure_ascii=False)}\n")
+    
+
 
 if __name__ == "__main__":
     main()
