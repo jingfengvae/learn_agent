@@ -89,6 +89,7 @@ class ProjectAssistantAgent(SimpleAgent):
  
         if isinstance(data, str):
             try:
+                print (repr(data))
                 data = json.loads(data)
             except Exception as e:
                 print (f"data loads 失败: {e}")
@@ -232,7 +233,12 @@ def main():
     # 第一次交互
     print ("第一次交互: 记录项目状态")
     response = assistant.run("我们已经完成了数据模型层的重构,测试覆盖率达到85%。下一步计划重构业务逻辑层。", note_as_action = True)
-    print (f"助手回答: {response}")
+    print (f"助手回答: {response}\n")
+
+    # 第二次交互
+    print ("第二次交互: 提出问题")
+    response = assistant.run("在重构业务逻辑层时，我遇到了依赖版本冲突的问题，该如何解决")
+    print (f"助手回答: {response}\n")
 
 
 if __name__ == "__main__":
