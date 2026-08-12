@@ -72,7 +72,7 @@ class ProjectAssistantAgent(SimpleAgent):
                         
             
             # 合并并去重
-            all_notes = []
+            all_notes = {}
             for note in blockers + results:
                 note_id = note.get('id')
                 all_notes[note_id] = note
