@@ -342,7 +342,7 @@ class NoteTool(Tool):
 
         return result
 
-    def _search_nodes(self, params):
+    def _search_notes(self, params):
         """搜索笔记"""
 
         query = params.get("query", "").lower()
