@@ -19,6 +19,7 @@ from context import ContextBuilder, ContextConfig, ContextPacket
 from message import Message
 from datetime import datetime
 from typing import Dict, List, Any
+import json
 
 class ProjectAssistantAgent(SimpleAgent):
     """
@@ -63,9 +64,12 @@ class ProjectAssistantAgent(SimpleAgent):
                 "limit": limit
             })
 
+            blockers = self._ensure_list_of_dicts(blockers_raw)
+            results = self._ensure_list_of_dicts(search_results)
+            
             # 合并并去重
             all_notes = []
-            for note in blockers_raw + search_results:
+            for note in blockers + results:
                 note_id = note.get('id')
                 all_notes[note_id] = note
 
@@ -74,6 +78,27 @@ class ProjectAssistantAgent(SimpleAgent):
             print (f"[ERROR] 笔记检索失败: {e}")
             return []
 
+    def _ensure_list_of_dicts(self, data):
+        """将NoteTool的返回规范化为字典列表"""
+        if data is None:
+            return []
+
+        if isinstance(data, str):
+            try:
+                data = json.loads(data)
+            except Exception as e:
+                print (f"data loads 失败: {e}")
+                return []
+
+        if isinstance(data, dict):
+            if "items" in data and isinstance(data['items'], list):
+                return [item for item in data['items'] if isinstance(item, dict)]
+            return [data]
+
+        if isinstance(data, list):
+            return [item for item in data if isinstance(item, dict)]
+
+        return []
 
     def _notes_to_packets(self, relevant_notes):
         """讲笔记转化为上下文包"""
