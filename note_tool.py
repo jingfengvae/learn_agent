@@ -152,7 +152,7 @@ class NoteTool(Tool):
         markdown_content = markdown_text[content_start:].strip()
         # 移除第一行标题
         lines = markdown_content.split('\n')
-        if lines and lines[0].startwith('# '):
+        if lines and lines[0].startswith('# '):
             markdown_content = '\n'.join(lines[1:]).strip()
         note['content'] = markdown_content
 
