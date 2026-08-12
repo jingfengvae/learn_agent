@@ -63,9 +63,13 @@ class ProjectAssistantAgent(SimpleAgent):
                 "query": query,
                 "limit": limit
             })
-
+            
             blockers = self._ensure_list_of_dicts(blockers_raw)
             results = self._ensure_list_of_dicts(search_results)
+            
+            print (f"数据类型: blockers_raw: {type(blockers_raw)}, search_results: {type(search_results)}")
+            print (f"数据类型: blockers: {type(blockers)}, results: {type(results)}")
+                        
             
             # 合并并去重
             all_notes = []
@@ -82,7 +86,7 @@ class ProjectAssistantAgent(SimpleAgent):
         """将NoteTool的返回规范化为字典列表"""
         if data is None:
             return []
-
+ 
         if isinstance(data, str):
             try:
                 data = json.loads(data)
