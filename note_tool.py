@@ -164,6 +164,7 @@ class NoteTool(Tool):
 
         return note
 
+    @tool_action("note_create", "创建一条新的结构化笔记")
     def _create_note(self, params):
         """创建笔记"""
         title = params.get('title')
@@ -216,7 +217,7 @@ class NoteTool(Tool):
 
         return f"笔记创建成功\nID: {note_id} \ntitle: {title} \ntype: {note_type}"
 
-         
+    @tool_action("note_read", "读取指定ID的笔记")     
     def _read_note(self, params):
         """读取笔记"""
         note_id = params.get("note_id")
@@ -235,6 +236,7 @@ class NoteTool(Tool):
 
         return self._format_note(note)
 
+    @tool_action("note_update", "更新已存在的笔记")
     def _update_note(self, params):
         """更新笔记"""
         note_id = params.get('note_id')
@@ -286,7 +288,7 @@ class NoteTool(Tool):
 
         return f"笔记更新完成: {note_id}"
 
-
+    @tool_action("note_delete", "删除指定ID的笔记")
     def _delete_note(self, params):
         """删除笔记"""
 
@@ -311,6 +313,7 @@ class NoteTool(Tool):
 
         return f"笔记已删除: {note_id}"
 
+    @tool_action("note_list", "列出所有笔记或指定类型的笔记")
     def _list_notes(self, params):
         """列出笔记"""
 
@@ -342,6 +345,7 @@ class NoteTool(Tool):
 
         return result
 
+    @tool_action("note_search", "搜索包含关键词的笔记")
     def _search_notes(self, params):
         """搜索笔记"""
 
@@ -380,10 +384,11 @@ class NoteTool(Tool):
 
         result = f"搜索结果: (共{len(match_notes)}条)\n\n"
         for note in match_notes:
-            result += self._format_note(note, campact = True) + "\n"
+            result += self._format_note(note, compact = True) + "\n"
 
         return result
 
+    @tool_action("note_summary", "获取笔记系统的摘要统计信息")
     def _get_summary(self):
         """获取笔记摘要"""
         total = len(self.notes_index["notes"])
