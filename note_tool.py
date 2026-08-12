@@ -411,8 +411,8 @@ class NoteTool(Tool):
         """格式化笔记输出"""
         if compact:
             return (
-                f"[{note['type']}] {note['title']}",
-                f"ID: {note['id']}\n",
+                f"[{note['type']}] {note['title']}"
+                f"ID: {note['id']}\n"
                 f"内容: {note['content']}"
             )
         else:
