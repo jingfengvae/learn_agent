@@ -206,3 +206,5 @@ def main():
     print (f"助手回答: {response}")
 
 
+if __name__ == "__main__":
+    main()
