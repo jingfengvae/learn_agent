@@ -389,7 +389,7 @@ class NoteTool(Tool):
         return result
 
     @tool_action("note_summary", "获取笔记系统的摘要统计信息")
-    def _get_summary(self):
+    def _get_summary(self, params):
         """获取笔记摘要"""
         total = len(self.notes_index["notes"])
         
