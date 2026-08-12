@@ -364,7 +364,7 @@ class NoteTool(Tool):
                 try:
                     note = self._markdown_to_note(markdown_text)
                 except Exception as e:
-                    print (f"解析笔记失败: {note_idx["id"]}: {e}")
+                    print (f"解析笔记失败: {note_idx['id']}: {e}")
                     continue
 
                 # 检查标题、内容、标签是否匹配
