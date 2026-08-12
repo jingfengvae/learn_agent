@@ -355,7 +355,7 @@ class NoteTool(Tool):
         # 搜索匹配笔记
         match_notes = []
 
-        for note_idx in self.notes_index("notes"):
+        for note_idx in self.notes_index["notes"]:
             note_path = self._get_note_path(note_idx["id"])
             if note_path.exists():
                 with open(note_path, "r", encoding="utf-8") as fr:
