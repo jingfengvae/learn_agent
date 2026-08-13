@@ -20,6 +20,11 @@ def demo_exploratory_navigation():
     result = termianl.run({"command": "ls -la"})
     print (result)
 
+    print ("===" * 80)
+    # 第二步：查看Python文件
+    print (f"2、查看Python文件")
+    result = termianl.run({"command": "ls -la *.py"})
+    print (result)
 
 def main():
     demo_exploratory_navigation()
