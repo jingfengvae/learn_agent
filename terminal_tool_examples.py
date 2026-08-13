@@ -29,7 +29,7 @@ def demo_exploratory_navigation():
     print ("===" * 80)
     # 第三步：查找特定的文件
     print (f"3、查找特定的文件")
-    result = termianl.run({"command": "find . -name '*.tool.py'"})
+    result = termianl.run({"command": "find . -name '*tool.py'"})
     print (result)
 
 def main():
