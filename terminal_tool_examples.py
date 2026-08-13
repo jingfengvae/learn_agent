@@ -1,0 +1,28 @@
+"""
+测试使用 TerminalTool 
+"""
+
+from terminal_tool import TerminalTool
+from pathlib import Path
+import os
+
+# 获取脚本所在的目录
+SCRIPT_DIR= Path(__file__).parent.absolute()
+
+def demo_exploratory_navigation():
+    """演示探索式导航"""
+    print ("===" * 80)
+
+    termianl = TerminalTool(workspace=str(SCRIPT_DIR))
+
+    # 第一步查看当前目录
+    print (f"1、查看当前目录")
+    result = termianl.run({"command": "ls -la"})
+    print (result)
+
+
+def main():
+    demo_exploratory_navigation()
+
+if __name__ == "__main__":
+    main()
