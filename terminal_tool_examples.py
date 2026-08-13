@@ -32,6 +32,14 @@ def demo_exploratory_navigation():
     result = termianl.run({"command": "find . -name '*tool.py'"})
     print (result)
 
+    print ("===" * 80)
+    # 第四步：查看文件内容
+    print (f"4、查看文件内容")
+    result = termianl.run({"command": "cat terminal_tool.py"})
+    print (result)
+
+
+
 def main():
     demo_exploratory_navigation()
 
