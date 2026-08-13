@@ -83,7 +83,7 @@ class TerminalTool(Tool):
 
     def _detect_os(self):
         """检测操作系统类型"""
-        system = platfrom.system().lower()
+        system = platform.system().lower()
 
         if system == "windows":
             return "windows"
