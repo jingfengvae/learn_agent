@@ -25,7 +25,7 @@ import subprocess
 import os
 from pathlib import Path
 import shlex
-import platfrom
+import platform
 
 from tool_base import Tool, ToolParameter
 
