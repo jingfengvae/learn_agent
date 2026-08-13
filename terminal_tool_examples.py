@@ -26,6 +26,12 @@ def demo_exploratory_navigation():
     result = termianl.run({"command": "ls -la *.py"})
     print (result)
 
+    print ("===" * 80)
+    # 第三步：查找特定的文件
+    print (f"3、查找特定的文件")
+    result = termianl.run({"command": "find . -name '*.tool.py'"})
+    print (result)
+
 def main():
     demo_exploratory_navigation()
 
