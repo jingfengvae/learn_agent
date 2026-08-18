@@ -216,7 +216,8 @@ class FunctionCallAgent(Agent):
 
         return client.chat.completions.create(
                     model = self.llm.model,
-                    messages=messages
+                    messages=messages,
+                    tools = tools,
                 )
 
         return client.chat.completions.create(

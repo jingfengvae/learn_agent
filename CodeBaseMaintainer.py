@@ -445,7 +445,7 @@ def main():
     # 初始化助手
     maintainer = CodeBaseMaintainer(
         project_name = "hello_agent_repo",
-        codebase_path = "./../hello_agent/",
+        codebase_path = "./hello-agents",
         llm = HelloAgentsLLM()
     )
 
