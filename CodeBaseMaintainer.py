@@ -57,7 +57,7 @@ class CodeBaseMaintainer:
         # 创建工具注册表并注册工具
 
         self.tool_registry = ToolRegistry()
-        self.tool_registry.register_tool(self.terminal_tool)
+        self.tool_registry.registry_tool(self.terminal_tool)
         self.tool_registry.registry_tool(self.note_tool)
         self.tool_registry.registry_tool(self.memory_tool)
 
