@@ -194,7 +194,7 @@ class FunctionCallAgent(Agent):
                         tool_choice: Union[str, dict],
                         **kwargs):
         """调用OpenAI客户端执行函数调用"""
-        client = getattr(self.llm, "_client", None)
+        client = getattr(self.llm, "client", None)
         if client is None:
             raise RuntimeError("HelloAgentsLLM 未初始化客户端，无法执行函数调用。")
 
