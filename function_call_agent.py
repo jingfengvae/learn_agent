@@ -200,11 +200,14 @@ class FunctionCallAgent(Agent):
 
         client_kwargs = dict(kwargs)
 
-        client_kwargs.setdefault("temperature", self.llm.temperature)
-        if self.llm.max_token is not None:
+        
+        if hasattr(self.llm, "temperature"):
+            client_kwargs.setdefault("temperature", self.llm.temperature)
+
+        if hasattr(self.llm, "max_token") and self.llm.max_token is not None:
             client_kwargs.setdefault("max_token", self.llm.max_tokens)
 
-        return client.chat.completions.creat(
+        return client.chat.completions.create(
             model = self.llm.model,
             messages=messages,
             tools = tools,
