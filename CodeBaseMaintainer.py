@@ -31,7 +31,7 @@ class CodeBaseMaintainer:
 
         self.project_name = project_name
         self.codebase_path = codebase_path
-        self.session_id = f"session_{datetime.new().strftime('%Y%m%d-%H%M%S')}"
+        self.session_id = f"session_{datetime.now().strftime('%Y%m%d-%H%M%S')}"
 
         #初始化LLM
         self.llm = llm or HelloAgentsLLM()
@@ -444,8 +444,8 @@ def main():
 
     # 初始化助手
     maintainer = CodeBaseMaintainer(
-        project_name = "my_repo",
-        codebase_path = "./my_repo",
+        project_name = "hello_agent_repo",
+        codebase_path = "./../hello_agent/",
         llm = HelloAgentsLLM()
     )
 
