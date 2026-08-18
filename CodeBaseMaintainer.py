@@ -451,7 +451,7 @@ def main():
 
     # 探索代码库
     print ("\n#### 探索代码库（Agent 自主探索）###\n")
-    response = maintainer.explore()
+    response = maintainer.explore(target = maintainer.codebase_path)
     print (f"代码库信息：{response}")
 
 if __name__ == "__main__":
