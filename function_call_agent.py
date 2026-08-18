@@ -100,8 +100,6 @@ class FunctionCallAgent(Agent):
                 }
             }
 
-            print (f'-------->type:{type(schema["function"]["description"])} ')
-
             if required:
                 schema["function"]["parameters"]["required"] = required
 
@@ -127,10 +125,7 @@ class FunctionCallAgent(Agent):
                     }
                 }
             })
-
-            print (f'1111-------->type:{type(schema["function"]["description"])} ')
             
-
         return schemas
 
     @staticmethod
@@ -211,31 +206,6 @@ class FunctionCallAgent(Agent):
 
         if hasattr(self.llm, "max_token") and self.llm.max_token is not None:
             client_kwargs.setdefault("max_token", self.llm.max_tokens)
-        
-        print("model =", self.llm.model)
-        print("tool_choice =", tool_choice)
-        print("tools count =", len(tools) if tools else 0)
-
-        print("tools =")
-        print(tools)
-
-        for tool in tools:
-            function = tool["function"]
-
-            print(
-                "tool name:",
-                function["name"]
-            )
-
-            print(
-                "description:",
-                repr(function["description"])
-            )
-
-            print(
-                "description type:",
-                type(function["description"])
-            )
 
         return client.chat.completions.create(
                     model = self.llm.model,

@@ -43,7 +43,7 @@ class Tool(ABC):
     
     def __init__(self, name: str, description: str, expandable: bool = False):
         self.name = name
-        self.description = description,
+        self.description = description
         self.expandable = expandable
     
     @abstractmethod

@@ -64,7 +64,6 @@ class TerminalTool(Tool):
             description = "跨平台命令行工具 - 执行安全的文件系统、文本处理和代码执行"
         )
 
-        print (f"22222222------> {type(self.description)}")
         self.workspace = Path(workspace).resolve()
         self.timeout = timeout
         self.max_output_size = max_output_size
