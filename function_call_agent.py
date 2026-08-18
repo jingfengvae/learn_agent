@@ -272,7 +272,7 @@ class FunctionCallAgent(Agent):
                 tool_choice = effective_tool_choice,
                 **kwargs
             )
-            choice = response_text.choice[0]
+            choice = response_text.choices[0]
             assistant_message = choice.message
             content = self._extract_message_content(assistant_message.content)
             tool_calls = list(assistant_message.tool_calls or [])
