@@ -214,6 +214,24 @@ class FunctionCallAgent(Agent):
         print("tools =")
         print(tools)
 
+        for tool in tools:
+            function = tool["function"]
+
+            print(
+                "tool name:",
+                function["name"]
+            )
+
+            print(
+                "description:",
+                repr(function["description"])
+            )
+
+            print(
+                "description type:",
+                type(function["description"])
+            )
+
         return client.chat.completions.create(
                     model = self.llm.model,
                     messages=messages,
