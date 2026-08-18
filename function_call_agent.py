@@ -206,6 +206,13 @@ class FunctionCallAgent(Agent):
 
         if hasattr(self.llm, "max_token") and self.llm.max_token is not None:
             client_kwargs.setdefault("max_token", self.llm.max_tokens)
+        
+        print("model =", self.llm.model)
+        print("tool_choice =", tool_choice)
+        print("tools count =", len(tools) if tools else 0)
+
+        print("tools =")
+        print(tools)
 
         return client.chat.completions.create(
             model = self.llm.model,
