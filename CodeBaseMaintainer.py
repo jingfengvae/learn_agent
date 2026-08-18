@@ -348,7 +348,7 @@ class CodeBaseMaintainer:
         """
         探索代码库（Agentic 方式）
         """
-        return self.run(f"请探索{target}的代码结构, 了解项目的组织方式", model = "explore")
+        return self.run(f"请探索{target}的代码结构, 了解项目的组织方式", mode = "explore")
 
     def analyze(self, focus: str):
         """
