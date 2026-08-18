@@ -100,6 +100,8 @@ class FunctionCallAgent(Agent):
                 }
             }
 
+            print (f'-------->type:{type(schema["function"]["description"])} ')
+
             if required:
                 schema["function"]["parameters"]["required"] = required
 
@@ -125,6 +127,9 @@ class FunctionCallAgent(Agent):
                     }
                 }
             })
+
+            print (f'1111-------->type:{type(schema["function"]["description"])} ')
+            
 
         return schemas
 
