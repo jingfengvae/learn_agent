@@ -217,7 +217,7 @@ if __name__ == "__main__":
     print (f"Transport: stdio")
     print ()
 
-    server.run
+    server.run()
     
 
         
