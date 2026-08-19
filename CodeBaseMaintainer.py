@@ -350,7 +350,7 @@ class CodeBaseMaintainer:
         """
         return self.run(f"请探索{target}的代码结构, 了解项目的组织方式", mode = "explore")
 
-    def analyze(self, focus: str):
+    def analyze(self, focus: str = ""):
         """
         分析代码质量（Agentic 方式）
         Agent 会自主决定如何分析代码质量
@@ -453,6 +453,12 @@ def main():
     print ("\n#### 探索代码库（Agent 自主探索）###\n")
     response = maintainer.explore(target = maintainer.codebase_path)
     print (f"代码库信息：{response}")
+
+    print ("*****" * 50)
+    
+    # 分析代码质量
+    print ("\n#### 分析代码库 （Agent 自主决定如何分析方法）####\n")
+    response = maintainer.analyze()
 
 if __name__ == "__main__":
     main()
