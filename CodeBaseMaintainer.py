@@ -358,7 +358,7 @@ class CodeBaseMaintainer:
         query = f"请分析该代码质量" + (f", 重点关注: {focus}" if focus else "")
         return self.run(query, mode = "analyze")
 
-    def plan_next_steps(self, command: str):
+    def plan_next_steps(self):
         """
         规划下一步任务(Agentic 方式)
         Agent 会查看历史笔记并规划下一步
@@ -465,6 +465,13 @@ def main():
     # 规划下一步
     print ("\n#### 规划下一步任务 （Agent 自主规划）####\n")
     response = maintainer.plan_next_steps()
+
+    print ("*****" * 50)
+            
+    # 生成学习报告
+    print ("\n#### 生成学习报告 ####\n")
+    response = maintainer.generate_report()
+    print (json.dumps(response, indent=2, ensure_ascii=False))
 
 if __name__ == "__main__":
     main()
