@@ -160,7 +160,57 @@ class FunctionCallAgent(Agent):
             return "".join(parts)
         return str(raw_content)
 
+    def _convert_parameter_types(self, tool_name: str, param_dict: dict[str, Any]):
+        """根据工具定义尽可能转参数类型"""
+        if not param_dict:
+            return {}
 
+        if not self.tool_registry:
+            return param_dict
+
+        tool = self.tool_registry.get_tool(tool_name)
+        if not tool:
+            return param_dict
+
+        try:
+            tool_params = tool.get_parameters()
+        except Exception as e:
+            print (f"获取工具{tool_name}参数失败: {e}")
+            return param_dict
+
+        typing_mapping = {param.name: param.type for param in tool_params}
+
+        converted: dict[str, Any] = {}
+
+        for key, value in typing_mapping.items():
+            param_type = typing_mapping.get(key)
+            if not param_type:
+                continue
+
+            try:
+                normalized = param_type.lower()
+                if normalized in {"number", "float"}:
+                    converted[key] = float(value)
+                elif normalized in {"integer", "int"}:
+                    converted[key] = int(value)
+                elif normalized in {"boolean", "bool"}:
+                    if isinstance(value, bool):
+                        converted[key] = value
+                    elif isinstance(value, (int, float)):
+                        converted[key] = bool(value)
+                    elif isinstance(value, str):
+                        converted[key] = value.lower() in {"true", "1", "yes"}
+                    else:
+                        converted[key] = bool(value)
+                else:
+                    converted[key] = value
+            except (TypeError, ValueError) as e:
+                print(f"type:{param_type} , error: {e}")
+                converted[key] = value
+
+        return converted
+
+    
     def _execute_tool_call(self, tool_name: str, arguments: dict[str, Any]):
         """执行工具调用并返回字符串结果"""
         if not self.tool_registry.get_tool(tool_name):
