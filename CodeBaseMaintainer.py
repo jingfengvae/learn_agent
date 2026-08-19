@@ -422,7 +422,7 @@ class CodeBaseMaintainer:
         if save_to_file:
             report_file = f"maintainer_report_{self.session_id}.json"
             with open(report_file, 'w+', encoding='utf-8') as fw:
-                json.dumps(report, fw, ensure_ascii=False, indent=2, default=str)
+                json.dump(report, fw, ensure_ascii=False, indent=2, default=str)
             report["report_file"] = report_file
             print (f"报告已保存：{report_file}")
 
