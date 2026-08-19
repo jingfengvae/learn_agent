@@ -161,7 +161,7 @@ class CodeBaseMaintainer:
 
                     # 根据工具名称统计
                     if 'terminal' in str(msg.content).lower() or 'command' in str(msg.content).lower():
-                        self.stats['commands_executed'] += 1
+                        self.stats['commands_excuted'] += 1
                     elif 'note' in str(msg.content).lower():
                         if 'create' in str(msg.content).lower():
                             self.stats['notes_created'] += 1
@@ -261,7 +261,7 @@ class CodeBaseMaintainer:
             for note in blockers + search_result:
                 if not isinstance(note, dict):
                     continue
-                note_id = note.get("id")
+                note_id = note.get("id") or note.get('note_id')
                 if not note_id:
                     continue
                 if note_id not in all_notes:
@@ -408,7 +408,7 @@ class CodeBaseMaintainer:
                 "duration_seconds": duration
             },
             "activity": {
-                "commands_executed": self.stats["commands_executed"],
+                "commands_excuted": self.stats["commands_excuted"],
                 "notes_created": self.stats["notes_created"],
                 "issues_found": self.stats["issues_found"]
             },
