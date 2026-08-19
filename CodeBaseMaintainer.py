@@ -460,6 +460,12 @@ def main():
     print ("\n#### 分析代码库 （Agent 自主决定如何分析方法）####\n")
     response = maintainer.analyze()
 
+    print ("*****" * 50)
+        
+    # 规划下一步
+    print ("\n#### 规划下一步任务 （Agent 自主规划）####\n")
+    response = maintainer.plan_next_steps()
+
 if __name__ == "__main__":
     main()
 
