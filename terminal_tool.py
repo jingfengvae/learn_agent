@@ -186,7 +186,7 @@ class TerminalTool(Tool):
                 type = "string",
                 description = (
                     f"要执行的命令（白名单: {', '.join(sorted(list(self.ALLOWED_COMMANDS)))}...）\n"
-                    "示例：'ls -al', 'cat test.txt', 'head -n 20 log.txt'"
+                    "示例：'ls -al', 'cat test.txt', 'head -n 20 log.txt', 'tree'"
                 ),
                 required = True
             )

@@ -356,7 +356,7 @@ class CodeBaseMaintainer:
         Agent 会自主决定如何分析代码质量
         """
         query = f"请分析该代码质量" + (f", 重点关注: {focus}" if focus else "")
-        return self.run(query, model = "analyze")
+        return self.run(query, mode = "analyze")
 
     def plan_next_steps(self, command: str):
         """
