@@ -262,6 +262,7 @@ class FunctionCallAgent(Agent):
                     messages=messages,
                     tools = tools,
                     tool_choice = tool_choice,
+                    **client_kwargs
                 )
 
         return client.chat.completions.create(

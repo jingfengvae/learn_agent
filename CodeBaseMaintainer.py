@@ -278,7 +278,7 @@ class CodeBaseMaintainer:
                 你是 {self.project_name} 项目的代码库维护助手。
                 你的核心能力:
                     1. 使用 TerminalTool 探索代码库
-                       - 你可以执行任何 shell 命令: ls, cat, grep, find, git 等
+                       - 你可以执行任何 shell 命令: ls, cat, grep, find, tree 等
                        - 工作目录: {self.codebase_path}
    
                     2. 使用 NoteTool 记录发现和任务
