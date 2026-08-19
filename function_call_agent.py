@@ -182,7 +182,7 @@ class FunctionCallAgent(Agent):
 
         converted: dict[str, Any] = {}
 
-        for key, value in typing_mapping.items():
+        for key, value in param_dict.items():
             param_type = typing_mapping.get(key)
             if not param_type:
                 continue
@@ -264,16 +264,6 @@ class FunctionCallAgent(Agent):
                     tool_choice = tool_choice,
                     **client_kwargs
                 )
-
-        return client.chat.completions.create(
-            model = self.llm.model,
-            messages=messages,
-            tools = tools,
-            tool_choice = tool_choice,
-            **client_kwargs
-        )
-
-    
     def run(
             self,
             input_text,
