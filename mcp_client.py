@@ -48,16 +48,13 @@ class MCPClient:
             **transport_kwargs: 传输特定的额外参数
         """
 
-        self.server_source = self._prepare_server_source(server_source)
-
         self.server_args = server_args or []
-
         self.transport_type = transport_type
         self.env = env or {}
         self.client: Optional[Client] = None
         self._context_manager = None
-
         self.transport_kwargs = transport_kwargs
+        self.server_source = self._prepare_server_source(server_source)
 
     def _prepare_server_source(self, server_source:Union[str, List[str], FastMCP, Dict[str, Any]]): 
         """准备服务器源，根据类型创建合适的传输配置"""
