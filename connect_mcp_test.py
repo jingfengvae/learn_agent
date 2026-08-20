@@ -15,4 +15,4 @@ async def connect_to_server():
         tools = await client.list_tools()
         print (f"可用工具：{[t['name'] for t in tools]}")
 
-asyncio.run(connect_to_server)
+asyncio.run(connect_to_server())
