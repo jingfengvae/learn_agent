@@ -3,11 +3,10 @@ from mcp_client import MCPClient
 
 async def connect_to_server():
     """
-    方式1：连接到社区提供的文件系统服务器
-    npx 会自动下载并运行@modelcontextprotocol/server-filesystem包
+    方式：连接到自定义的Python MCP 服务器
     """
     client = MCPClient([
-        "npx", "-y", "@modelcontextprotocol/server-filesystem", "."
+        "python", "mcp_server.py"
     ])
 
     # 使用 async with 确保连接正确关闭
