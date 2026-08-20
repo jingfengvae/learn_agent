@@ -16,7 +16,7 @@ import asyncio
 import os
 
 from fastmcp import Client, FastMCP
-from fastmcp.client.transports import PythonStdionTransport, SSETransport, StreamableHttpTransport, StdioTransport
+from fastmcp.client.transports import PythonStdioTransport, SSETransport, StreamableHttpTransport, StdioTransport
 
 FASTMCP_AVAILABLE = True
 
