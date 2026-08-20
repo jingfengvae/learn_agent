@@ -84,7 +84,7 @@ class MCPClient:
         # 4、Python 脚本路径 - Stdio 传输
         if isinstance(server_source, str) and server_source.endswith('.py'):
             print (f"使用 Stdio 传输(Python)：{server_source}")
-            return PythonStdionTransport(
+            return PythonStdioTransport(
                 script_path = server_source,
                 args = self.server_args,
                 env = self.env if self.env else None,
@@ -96,7 +96,7 @@ class MCPClient:
             print (f"使用 Stdio 传输（命令）: {' '.join(server_source)}")
             if server_source[0] == 'python' and len(server_source) > 1 and server_source[1].endswith('.py'):
                 # Python 脚本
-                return PythonStdionTransport(
+                return PythonStdioTransport(
                     script_path = server_source[1],
                     args = server_source[2:] + self.server_args,
                     env = self.env if self.env else None,
@@ -124,7 +124,7 @@ class MCPClient:
             """检查是否是Python脚本"""
             args = config.get("args", [])
             if args and args[0].endswith('.py'):
-                return PythonStdionTransport(
+                return PythonStdioTransport(
                     script_path = args[0],
                     args = args[1:] + self.server_args,
                     env = config.get('env'),
