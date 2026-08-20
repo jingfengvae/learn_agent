@@ -134,7 +134,7 @@ class MCPClient:
             else:
                 """使用通用 Stdio 传输"""
                 return StdioTransport(
-                    command = config.get('command', 'python')
+                    command = config.get('command', 'python'),
                     args = args + self.server_args,
                     env = config.get('env'),
                     cwd = config.get('cwd'),
