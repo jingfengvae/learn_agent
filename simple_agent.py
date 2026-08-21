@@ -296,7 +296,7 @@ class SimpleAgent(Agent):
 
                     tool_results.append(result)
 
-                    clean_response = clean_response.replace(call['origin'], '')
+                    clean_response = clean_response.replace(call['original'], '')
 
                 messages.append({"role": "assistant", "content": clean_response})
 
