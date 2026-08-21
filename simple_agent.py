@@ -242,7 +242,7 @@ class SimpleAgent(Agent):
         else:
             return {'input': parameters}
 
-    def run(self, intput_text: str, max_tool_iterations: int = 5, **kwargs):
+    def run(self, input_text: str, max_tool_iterations: int = 5, **kwargs):
         """
         运行SimpleAgent，支持可选的工具调用
         
@@ -268,11 +268,11 @@ class SimpleAgent(Agent):
             messages.append({"role": msg.role, "content": msg.content})
 
         # 添加当前用户消息
-        messages.append({"role": "user", "content": intput_text})
+        messages.append({"role": "user", "content": input_text})
 
         if not self.enable_tool_calling:
             response = self.llm.invoke(messages, **kwargs)
-            self.add_messages([Message(intput_text, "user")])
+            self.add_messages([Message(input_text, "user")])
             self.add_messages([Message(response, "assistant")])
             return response
 
