@@ -330,7 +330,7 @@ class MCPTool(Tool):
                             return "没有找到可用工具"
                         result = f"找到{len(tools)}个工具\n"
                         for tool in tools:
-                            result += f"- {tool['name']: {tool['description']}}\n"
+                            result += f"- {tool['name']}: {tool['description']}\n"
                         return result
 
                     elif action == 'call_tool':
@@ -350,7 +350,7 @@ class MCPTool(Tool):
 
                         result = f"找到{len(resources)}个资源\n"
                         for resource in resources:
-                            result += f"- {resource['uri']} : {resource['uri']}\n"
+                            result += f"- {resource['uri']} : {resource['name']}\n"
                         return result
 
                     elif action == 'read_resource':
@@ -409,8 +409,8 @@ class MCPTool(Tool):
                     print (f"没有运行中的循环，直接运行：{e}")
                     return asyncio.run(run_mcp_operation())
             except Exception as e:
-                print (f"异步操作失败: {e}")
-                return f"异步操作失败: {e}"
+                print (f"异步操作失败: {str(e)}")
+                return f"异步操作失败: {str(e)}"
 
         except Exception as e:
             print (f"MCP 操作失败: {e}")
