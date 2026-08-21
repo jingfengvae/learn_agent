@@ -159,18 +159,22 @@ class MCPTool(Tool):
 
             @server.tool()
             def add(a: float, b: float):
+                """加法计算器"""
                 return a + b
 
             @server.tool()
             def subtract(a: float, b: float):
+                """减法计算器"""
                 return a - b
 
             @server.tool()
             def muliply(a: float, b: float):
+                """乘法计算器"""
                 return a * b
 
             @server.tool()
             def divide(a: float, b: float):
+                """除法计算器"""
                 if b == 0:
                     raise ValueError("除数不能为0")
                 
@@ -344,6 +348,9 @@ class MCPTool(Tool):
 
                     elif action == 'list_resources':
                         resources = await client.list_resources()
+
+                        print ("resources type:", type(resources))
+                        print ("resources:", resources) 
 
                         if not resources:
                             return "没有找到任何资源"
