@@ -1,8 +1,9 @@
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, TYPE_CHECKING
 
-from mcp_tool import MCPTool
 from tool_base import Tool, ToolParameter
 
+if TYPE_CHECKING:
+    from mcp_tool import MCPTool
 class MCPWrappedTool(Tool):
     """
     MCP工具包装器 - 将单个MCP工具包装成HelloAgents Tool
@@ -13,7 +14,7 @@ class MCPWrappedTool(Tool):
 
     def __init__(
             self, 
-            mcp_tool,
+            mcp_tool: "MCPTool",
             tool_info: Dict[str, Any], 
             prefix: str = ""):
 
