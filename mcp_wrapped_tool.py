@@ -78,7 +78,7 @@ class MCPWrappedTool(Tool):
         # 构建MCP调用参数
         mcp_params = {
             "action": "call_tool",
-            "tool_name": self.tool_name,
+            "tool_name": self.mcp_tool_name,
             "arguments": params
         }
 
