@@ -126,7 +126,7 @@ class MCPTool(Tool):
             if server_name and server_name in MCP_SERVER_ENV_MAP:
                 auto_keys = MCP_SERVER_ENV_MAP[server_name]
                 for key in auto_keys:
-                    value = os.get(key)
+                    value = os.getenv(key)
                     if value:
                         result_env[key] = value
                         print (f"自动加载环境变量: {key}")
