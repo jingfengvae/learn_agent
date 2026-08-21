@@ -186,13 +186,13 @@ class MCPTool(Tool):
                 return f"Hello, {name}! 欢迎使用 HelloAgents MCP 工具！"
 
             @server.tool()
-            def get_system_info():
+            async def get_system_info():
                 """获取系统信息"""
                 return {
                     "platform": platform.system(),
                     "python_version": sys.version,
                     "server_name": server.name,
-                    "tools_count": 6
+                    "tools_count": len(await server.list_tools())
                 }
 
             return server
