@@ -77,7 +77,7 @@ class SimpleAgent(Agent):
             tool_calls.append({
                 "tool_name": tool_name,
                 "parameters": parameters,
-                "origin": f"[TOOL_CALL: {tool_name}:{parameters}]"
+                "original": f"[TOOL_CALL: {tool_name}:{parameters}]"
                 })
         
         return tool_calls
