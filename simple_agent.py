@@ -94,7 +94,7 @@ class SimpleAgent(Agent):
                 return f"ERROR: 未找到工具{tool_name}"
             
             """解析工具参数"""
-            param_dict = self._get_tool_params(tool_name, parameters)
+            param_dict = self._parse_tool_call(tool_name, parameters)
             
             if self.tool_confirm_callback is not None:
                 try:
