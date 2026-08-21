@@ -406,7 +406,7 @@ class MCPTool(Tool):
                         future = executor.submit(run_in_thread)
                         return future.result()
                 except RuntimeError as e:
-                    print ("没有运行中的循环，直接运行：{e}")
+                    print (f"没有运行中的循环，直接运行：{e}")
                     return asyncio.run(run_mcp_operation())
             except Exception as e:
                 print (f"异步操作失败: {e}")
