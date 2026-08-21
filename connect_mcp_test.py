@@ -11,3 +11,11 @@ result = mcp_tool.run({
 })
 print (f"MCP工具计算结果: result = {result}")
 
+# 2、创建GitHub MCP工具
+github_tool = MCPTool(
+    server_command = ["npx", "-y", "@modelcontextprotocol/server-github"]
+)
+# 列出github_tool可用工具
+print ("可用工具：")
+result = github_tool.run({"action": "list_tools"})
+print (result)
