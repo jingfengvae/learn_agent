@@ -349,10 +349,7 @@ class MCPTool(Tool):
 
                     elif action == 'list_resources':
                         resources = await client.list_resources()
-
-                        print ("resources type:", type(resources))
-                        print ("resources:", resources) 
-
+                        
                         if not resources:
                             return "没有找到任何资源"
 
