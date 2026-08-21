@@ -15,3 +15,8 @@ print (f"MCP工具计算结果: {result}")
 print ("可用工具：")
 result = mcp_tool.run({"action": "list_tools"})
 print (result)
+
+# 列出资源
+print ("可用资源：")
+result = mcp_tool.run({"action": "list_resources"})
+print (result)
