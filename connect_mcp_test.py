@@ -1,6 +1,8 @@
 import asyncio
 from mcp_client import MCPClient
 from mcp_tool import MCPTool
+from hello_agent import HelloAgentsLLM
+from simple_agent import SimpleAgent
 
 # 1、MCP 工具访问
 mcp_tool = MCPTool()
@@ -20,3 +22,9 @@ print (result)
 print ("可用资源：")
 result = mcp_tool.run({"action": "list_resources"})
 print (result)
+
+# 在agent中使用MCP工具
+agent = SimpleAgent(name = "AI 助手", llm = HelloAgentsLLM())
+agent.add_tool(mcp_tool)
+response = agent.run("计算 123 + 456")
+print (response)
