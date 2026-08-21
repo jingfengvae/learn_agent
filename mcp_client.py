@@ -222,7 +222,7 @@ class MCPClient:
         if not self.client:
             raise RuntimeError("Client not ConnectionError")
 
-        result = await self.client.list_resources()
+        resources = await self.client.list_resources()
 
         return [
             {
@@ -231,7 +231,7 @@ class MCPClient:
                 "description": resource.description,
                 "mime_type": getattr(resource, 'mime_tye', None)
             }
-            for resource in result.resources
+            for resource in resources
         ]
 
     async def read_resource(self, uri):

@@ -182,6 +182,7 @@ class MCPTool(Tool):
 
             @server.tool()
             def greet(name: str = "World"):
+                """友好问候"""
                 return f"Hello, {name}! 欢迎使用 HelloAgents MCP 工具！"
 
             @server.tool()
