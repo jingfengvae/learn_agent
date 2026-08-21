@@ -242,7 +242,7 @@ class SimpleAgent(Agent):
         else:
             return {'input': parameters}
 
-    def run(self, intput_text, max_tool_iterations, **kwargs):
+    def run(self, intput_text: str, max_tool_iterations: int = 5, **kwargs):
         """
         运行SimpleAgent，支持可选的工具调用
         
