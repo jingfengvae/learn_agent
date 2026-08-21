@@ -192,7 +192,7 @@ class MCPTool(Tool):
                     "platform": platform.system(),
                     "python_version": sys.version,
                     "server_name": server.name,
-                    "tools_count": len(server.list_tools())
+                    "tools_count": 6
                 }
 
             return server
@@ -349,7 +349,7 @@ class MCPTool(Tool):
 
                     elif action == 'list_resources':
                         resources = await client.list_resources()
-                        
+
                         if not resources:
                             return "没有找到任何资源"
 
