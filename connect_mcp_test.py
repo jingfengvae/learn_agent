@@ -23,6 +23,15 @@ print ("可用资源：")
 result = mcp_tool.run({"action": "list_resources"})
 print (result)
 
+# 获取系统信息
+result = mcp_tool.run(
+    {
+        "action": "call_tool",
+        "tool_name": "get_system_info"
+    }
+    )
+print (result)
+
 # 在agent中使用MCP工具
 agent = SimpleAgent(name = "AI 助手", llm = HelloAgentsLLM())
 agent.add_tool(mcp_tool)
