@@ -1,4 +1,7 @@
 from a2a_server import A2AServer
+import threading
+import time
+
 
 def create_calculator_agent():
     """创建一个计算器智能体"""
@@ -176,3 +179,43 @@ if agent:
     
     print (agent.get_info())
            
+researcher = A2AServer(
+    name = "researcher",
+    description = "负责搜索和分析资料的Agent",
+)
+
+# 定义技能
+@researcher.skill("research")
+def handle_research(text: str):
+    """处理研究请求"""
+    import re
+    match = re.search(r'research\s+(.+)', text, re.IGNORECASE)
+    topic = match.group(1).strip() if match else text
+
+    # 实际的研究逻辑(这里简化)
+    result = {
+        "topic": topic,
+        "findings": f"关于{topic}的研究结果...",
+        "sources": ["来源1", "来源2", "来源3"]
+    }
+
+    return str(result)
+
+def start_server():
+    researcher.run(host = "localhost", port = 5000)
+
+if __name__ == "__main__":
+    server_thread = threading.Thread(target = start_server, daemon = True)
+
+    server_thread.start()
+
+    print ("研究员Agent服务已启动在 http://localhost:5000")
+
+    try:
+        # 保持程序运行
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print ("\n服务终止")
+
+
