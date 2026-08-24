@@ -168,6 +168,6 @@ if agent:
     print (result)
 
     print ("测试计算技能:\n")
-    result = agent.skills["calculate"]("10 * 2 + 20")
+    result = agent.skills["calculate"]("10*2+20")
     print (result)
            
