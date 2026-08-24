@@ -89,7 +89,41 @@ def create_calculator_agent():
         return f"我是{calculator.name}, 可以进行基础数学计算。支持的功能: {list(calculator.skills.keys())}"
     
     return calculator
-    
+
+
+def create_custom_agent():
+    """创建一个自定义的智能体"""
+
+    # 创建智能体
+    agent = A2AServer(
+        name = "my-custom-agent",
+        description = "我的自定义智能体",
+        capabilities = {"custom": ["skill1", "skill2"]}
+    )
+
+    # 添加技能
+    @agent.skill("greet")
+    def greet_user(name: str):
+        """问候用户"""
+        return f"Hello, {name}! 我是自定义的智能体。"
+
+    @agent.skill("calculate")
+    def calculate(expression: str):
+        """简单计算"""
+        try:
+            # 安全的计算
+            allowed_chars = set('0123456789+-*/().')
+            if all(c in allowed_chars for c in expression):
+                result = eval(expression)
+                return f"计算结果: {expression} = {result}"
+            else:
+                return f"Error: 只支持基本数学计算"
+        except Exception as e:
+            print (f"Error: {e}")
+            return f"计算错误: {e}"  
+
+    return agent  
+
 
 # 创建一个智能体    
 calc_agent = create_calculator_agent()
@@ -123,5 +157,17 @@ if calc_agent:
         print ()
 
     
+# 创建并测试自定义智能体
+agent = create_custom_agent()
+if agent:
+    print ("测试自定义智能体")
 
+    print ("测试问候技能。。。")
+    result = agent.skills["greet"]("张三")
+
+    print (result)
+
+    print ("测试计算技能:\n")
+    result = agent.skills["calculate"]("10 * 2 + 20")
+    print (result)
            
