@@ -137,6 +137,8 @@ if calc_agent:
         "计算 6 - 3",
         "计算 6 除以 2"
     ]
+
+    print (calc_agent.get_info())
     
     for query in test_queries:
         if "信息" in query:
@@ -156,6 +158,7 @@ if calc_agent:
         print (f"回复: {result}")
         print ()
 
+
     
 # 创建并测试自定义智能体
 agent = create_custom_agent()
@@ -170,4 +173,6 @@ if agent:
     print ("测试计算技能:\n")
     result = agent.skills["calculate"]("10*2+20")
     print (result)
+    
+    print (agent.get_info())
            
