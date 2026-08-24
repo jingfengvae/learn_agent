@@ -94,6 +94,6 @@ class A2AClient:
 client = A2AClient("http://localhost:5000")
 
 # 发送请求
-response = client.execute_skill("research")
+response = client.execute_skill("research", "research AI在医疗领域的应⽤")
 print (f"收到的响应: {response}")
 
