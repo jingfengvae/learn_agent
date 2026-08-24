@@ -72,7 +72,7 @@ def create_calculator_agent():
             parts = query.strip().replace("计算", "").replace("除以", "/")
         
             if '/' in parts:
-                numbers = [float(x.strip()) for x in parts.split('*')]
+                numbers = [float(x.strip()) for x in parts.split('/')]
                 result = 1
                 if len(numbers) == 2:
                     result = numbers[0] / numbers[1]
