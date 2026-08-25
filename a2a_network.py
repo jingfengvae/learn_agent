@@ -62,9 +62,9 @@ def edit_article(text: str):
     return str(result)
 
 # 2、启动所有服务
-threading.Thread(target = lambda: researcher.run(host = "localhost", port = 5000), daemon = True).start()
-threading.Thread(target = lambda: writer.run(host = "localhost", port = 5001), daemon = True).start()
-threading.Thread(target = lambda: editor.run(host = "localhost", port = 5002), daemon = True).start()
+threading.Thread(target = lambda: researcher.run(host = "localhost", port = 5001), daemon = True).start()
+threading.Thread(target = lambda: writer.run(host = "localhost", port = 5002), daemon = True).start()
+threading.Thread(target = lambda: editor.run(host = "localhost", port = 5003), daemon = True).start()
 time.sleep(2)
 
 # 3、创建客户端连接到各个agent
