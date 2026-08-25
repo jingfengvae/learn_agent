@@ -89,7 +89,7 @@ class A2AClient:
 
     
 
-        
+"""       
 # 创建客户端
 client = A2AClient("http://localhost:5000")
 
@@ -97,3 +97,4 @@ client = A2AClient("http://localhost:5000")
 response = client.execute_skill("research", "research AI在医疗领域的应⽤")
 print (f"收到的响应: {response}")
 
+"""
