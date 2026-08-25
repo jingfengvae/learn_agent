@@ -25,7 +25,7 @@ writer = A2AServer(
     description = "撰写员"
 )
 
-@writer.skill("writer")
+@writer.skill("write")
 def do_article(text: str):
     import re
     match = re.search(r"write\s+(.+)", text, re.IGNORECASE)
@@ -79,11 +79,11 @@ def create_content(topic):
     research_data = research.get('result', '')
 
     # 步骤2：撰写
-    article = writer_client.execute_skill("writer", f"write {research_data}")
+    article = writer_client.execute_skill("write", f"write {research_data}")
     article_content = article.get("result", '')
 
     # 步骤3：编辑
-    final = editor_client.execute_skill("editor", f"edit {article_content}")
+    final = editor_client.execute_skill("edit", f"edit {article_content}")
     return final.get("result", "")
 
 # 使用
