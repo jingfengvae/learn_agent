@@ -17,21 +17,6 @@ llm = HelloAgentsLLM()
 
 # 假设已经有一个研究员Agent服务运行在 http://localhost:5000
 #  创建 Agent 服务
-researcher = A2AServer(
-    name = "researcher",
-    description = "研究员"
-)
-
-@researcher.skill("research")
-def do_research(text: str):
-    import re
-    match = re.search(r"research\s+(.+)", text, re.IGNORECASE)
-    topic = match.group(1).strip() if match else text
-    return str({"topic": topic, "findings": f"{topic}的研究结果"})
-
-# 2、启动所有服务
-threading.Thread(target = lambda: researcher.run(host = "localhost", port = 5000), daemon = True).start()
-time.sleep(2)
 
 # 创建一个协调者
 coorinator = SimpleAgent(name="协调者", llm=llm)
