@@ -17,7 +17,7 @@ class A2ATool(Tool):
     def __init__(
             self, 
             agent_url: str,
-            name: str, 
+            name: str = "a2a", 
             description: str = None):
 
         """
