@@ -26,5 +26,5 @@ research_tool = A2ATool(agent_url = "http://localhost:5000", name = "researcher"
 coorinator.add_tool(research_tool)
 
 # 协调者可以调用研究员Agent
-response = coorinator.run("使用A2ATool action=ask, 向Agent提问: 请研究AI在教育领域的应用")
+response = coorinator.run("使用A2A工具, 工具中的参数action=ask, 向Agent提问: 请研究AI在教育领域的应用")
 print (response)
