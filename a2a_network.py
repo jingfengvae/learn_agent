@@ -68,9 +68,9 @@ threading.Thread(target = lambda: editor.run(host = "localhost", port = 5002), d
 time.sleep(2)
 
 # 3、创建客户端连接到各个agent
-researcher_client = A2AClient("http://localhost:5000")
-writer_client = A2AClient("http://localhost:5001")
-editor_client = A2AClient("http://localhost:5002")
+researcher_client = A2AClient("http://localhost:5001")
+writer_client = A2AClient("http://localhost:5002")
+editor_client = A2AClient("http://localhost:5003")
 
 # 4、协作流程
 def create_content(topic):
