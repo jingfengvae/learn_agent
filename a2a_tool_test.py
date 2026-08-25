@@ -37,9 +37,9 @@ time.sleep(2)
 coorinator = SimpleAgent(name="协调者", llm=llm)
 
 # 添加A2A工具，连接到研究员Agent
-research_tool = A2ATool(agent_url = "http://localhost:5000")
+research_tool = A2ATool(agent_url = "http://localhost:5000", name = "researcher", description="研究员Agent，可以搜索和分析资料")
 coorinator.add_tool(research_tool)
 
 # 协调者可以调用研究员Agent
-response = coorinator.run("使用A2A工具，向Agent提问: 请研究AI在教育领域的作用")
+response = coorinator.run("使用A2A action = ask 工具，向Agent提问: 请研究AI在教育领域的作用")
 print (response)
