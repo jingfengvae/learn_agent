@@ -330,7 +330,35 @@ if __name__ == "__main__":
     print (f"测试广播...")
     recipients = network.broadcast_message("node1", {"type": "broadcast", "content": "Hello everyone..."})
     print (f"Broadcast from node1 to: {', '.join(recipients)}")   
-        
+
+    print (f"*****" * 20)
+    print ("创建服务发现。。。。")
+
+    discovery = ANPDicovery()
+
+    service1 = ServiceInfo(
+            service_id = "nlp_agent_1",
+            service_type = "nlp",
+            endpoint = "http://localhost:8001",
+            service_name = "NLP处理专家A",
+            capabilities = ["text_analysis", "sentiment_analysis", "ner"],
+            metadata = {"load": 0.3, "price": 0.01, "version": "1.0.0"}
+    )        
+
+    discovery.register_service(service1)
+
+    service2 = ServiceInfo(
+            service_id = "nlp_agent_2",
+            service_type = "nlp",
+            endpoint = "http://localhost:8002",
+            service_name = "NLP处理专家B",
+            capabilities = ["text_analysis", "sentiment_analysis"],
+            metadata = {"load": 0.7, "price": 0.02, "version": "1.1.0"}
+        )   
+
+    discovery.register_service(service2)
+
+    print ("服务已注册。。。。")
                 
 
 
