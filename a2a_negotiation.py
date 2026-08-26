@@ -79,7 +79,7 @@ if __name__ == "__main__":
     print (f"协商请求: {negotiation.get('result')}")
 
     # Agent1 评估方案
-    prosoal = client1.execute_skill("prosoal", "propose {'task': '开发新功能', 'deadline': 5}")
+    prosoal = client1.execute_skill("propose", "propose {'task': '开发新功能', 'deadline': 5}")
     print (f"提案评估: {prosoal.get('result')}")
 
     # 保持服务运行
