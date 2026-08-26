@@ -362,7 +362,7 @@ if __name__ == "__main__":
                 
 
     # 按类型查找服务
-    nlp_services = discovery.discover_services("nlp")
+    nlp_services = discovery.discover_services(service_type = "nlp")
     print (f"找到{len(nlp_services)}个 NLP 服务。。。")
 
     # 选择负载最低的服务
