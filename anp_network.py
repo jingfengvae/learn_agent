@@ -112,7 +112,7 @@ class ANPDicovery:
 
         # 按类型过滤：
         if service_type:
-            services = [service for service in services if service['service_type'] == service_type]
+            services = [service for service in services if service.service_type == service_type]
 
         # 按元数据过滤
         if filters:
