@@ -61,6 +61,10 @@ receptionist = SimpleAgent(
                 2、将问题转发给相应的专家;
                 3、整理专家的回答并返回给用户;
 
+                可用工具：
+                    - tech_expert: 回答技术问题
+                    - sales_advisor: 回答销售问题  
+
                 请保持专业和礼貌。
                 """
 )
