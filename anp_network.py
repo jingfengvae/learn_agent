@@ -164,42 +164,42 @@ class ANPNetWork:
         self._nodes: Dict[str, Dict[str, Any]] = {}
         self._connections: Dict[str, List[str]] = {}
 
-    def add_node(self, note_id: str, endpoint: str, metadata: Optional[Dict[str, Any]] = None):
+    def add_node(self, node_id: str, endpoint: str, metadata: Optional[Dict[str, Any]] = None):
         """
         添加节点到网络
 
         Args:
-            note_id: 节点ID
+            node_id: 节点ID
             endpoint: 节点端点
             metadata: 节点元数据
         """
 
-        self._nodes[note_id] = {
-            "note_id": note_id,
+        self._nodes[node_id] = {
+            "note_id": node_id,
             "endpoint": endpoint,
             "metadata": metadata,
             "status": "active"
         }
 
-        self._connections[note_id] = []
+        self._connections[node_id] = []
     
-    def remove_node(self, note_id: str):
+    def remove_node(self, node_id: str):
         """
         从网络中移除节点
 
         Args:
-           note_id: 节点ID
+           node_id: 节点ID
         
         Return:
             是否移除成功
         """
-        if note_id in self._nodes:
-            del self._nodes[note_id]
-            del self._connections[note_id]
+        if node_id in self._nodes:
+            del self._nodes[node_id]
+            del self._connections[node_id]
             # 移除其他节点到此节点的连接
             for connections in self._connections.values():
-                if note_id in connections:
-                    connections.remove(note_id)
+                if node_id in connections:
+                    connections.remove(node_id)
             return True
         return False
 
@@ -361,5 +361,24 @@ if __name__ == "__main__":
     print ("服务已注册。。。。")
                 
 
+    # 按类型查找服务
+    nlp_services = discovery.discover_services(service_type="nlp")
+    print (f"找到{len(nlp_services)}个 NLP 服务。。。")
 
+    # 选择负载最低的服务
+    best_service = min(nlp_services, key = lambda s: s.metadata.get('load', 1.0))
+    print (f"最佳服务: {best_service.service_name} : {best_service.metadata.get('load')}")
 
+    # 创建网络
+    network = ANPNetWork(network_id = "ai_cluster")
+
+    # 添加节点
+    for service in discovery.list_all_services():
+        network.add_node(service.service_id, service.endpoint, service.metadata)
+
+    # 建立连接
+    network.connect_nodes(service1.service_id, service2.service_id)
+
+    stats = network.get_network_stats()
+
+    print (f"网络构建完成，节点信息: {stats}")
