@@ -73,7 +73,7 @@ class ANPDicovery:
             是否注册成功
         """
 
-        self._services[service.service_id] = ServiceInfo
+        self._services[service.service_id] = service
 
         return True
 
