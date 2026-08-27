@@ -98,7 +98,7 @@ class ANPTool(Tool):
                 if not services:
                     return "没有找到相关服务..."
                 
-                result = f"找到{len(service)}个服务:\n"
+                result = f"找到{len(services)}个服务:\n"
                 for service in services:
                     result += f"服务ID: {service.service_id}\n"
                     result += f"  名称: {service.service_name}\n"
