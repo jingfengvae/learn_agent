@@ -43,6 +43,17 @@ def create_weather_assistant():
     
     return assisant
 
+def interactive():
+    """交互模式"""
+    assisant = create_weather_assistant()
+
+    while True:
+        user_input = input("\n你: ").strip()
+        if user_input.lower() in ['exit', 'quit']:
+            break
+        response = assisant.run(user_input)
+        print (f'---->天气信息:\n {response}')
+
 def demo():
     """演示"""
 
@@ -56,3 +67,5 @@ def demo():
 
 if __name__ == "__main__":
     demo()
+
+    interactive()
