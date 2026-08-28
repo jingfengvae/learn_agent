@@ -15,6 +15,10 @@ async def test_weather_server():
             # 测试1：获取服务器信息
             info = json.loads(await client.call_tool("get_server_info", {}))
             print (f"服务器信息: {info}")
+
+            # 测试2：列出所有城市
+            cities = json.loads(await client.call_tool("list_supported_cities", {}))
+            print (f"所有城市信息: {cities}")
     except Exception as e:
         print (f"测试失败: {e}")
 
