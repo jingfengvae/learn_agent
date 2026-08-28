@@ -31,7 +31,7 @@ def create_weather_assistant():
         server_command = ["python", server_script]
     ) 
 
-    assisant.add_tool(weather_mcp_tool)
+    # assisant.add_tool(weather_mcp_tool)
     
     # 显示展开并注册 MCP 子工具
     expanded_tools = weather_mcp_tool.get_expanded_tools()
