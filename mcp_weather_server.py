@@ -24,7 +24,8 @@ CITY_MAP = {
     "成都": "Chengdu",
     "天津": "Tianjing",
     "西安": "Xi'an",
-    "苏州": "Suzhou"
+    "苏州": "Suzhou",
+    "石首": "Shishou"
 }
 
 def get_weather_data(city: str):

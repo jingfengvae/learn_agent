@@ -23,6 +23,14 @@ async def test_weather_server():
             # 测试3：查询深圳的天气
             weather = json.loads(await client.call_tool("get_weather", {"city": "深圳"}))
             print (f"深圳的天气信息: {weather}")
+
+            # 测试4：查询北京的天气
+            weather = json.loads(await client.call_tool("get_weather", {"city": "北京"}))
+            print (f"北京的天气信息: {weather}")
+
+            # 测试5：查询石首的天气
+            weather = json.loads(await client.call_tool("get_weather", {"city": "石首"}))
+            print (f"石首的天气信息: {weather}")
     except Exception as e:
         print (f"测试失败: {e}")
 
